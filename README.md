@@ -53,3 +53,45 @@ npm run spl_init      # Create token mint
 npm run spl_mint      # Mint tokens to wallet
 npm run spl_transfer  # Transfer tokens to another wallet
 ```
+
+---
+
+# NFT Minting
+
+## Rugged Skull NFT
+
+![Rugged Skull NFT](nft_screenshot.png)
+
+| Property | Value |
+|----------|-------|
+| Name | Rugged Skull |
+| Symbol | RSKULL |
+| Mint Address | `5u729sALhp29x2Rzj8u8gZnNXPAHbzSs93BNXMzqHng3` |
+| Network | Devnet |
+
+## NFT Transaction Hash
+
+```
+2rFbbhyezk9Ys3Mk525pmsdqZr6Szrh64xkU8MNx7GWWWAMYw9C2C5PcNr4csUsb5F7kT9aZMhzgdw2Qg8qQyZAJ
+```
+
+## NFT Explorer Links
+
+Mint Address: https://explorer.solana.com/address/5u729sALhp29x2Rzj8u8gZnNXPAHbzSs93BNXMzqHng3?cluster=devnet
+
+Mint Transaction: https://explorer.solana.com/tx/2rFbbhyezk9Ys3Mk525pmsdqZr6Szrh64xkU8MNx7GWWWAMYw9C2C5PcNr4csUsb5F7kT9aZMhzgdw2Qg8qQyZAJ?cluster=devnet
+
+## NFT Metadata
+
+Image URI: https://gateway.irys.xyz/FZ64SH5yDrWUzsPjK8JATjRnpTHaeVGv45juF5wq4y5y
+
+Metadata URI: https://gateway.irys.xyz/DNUAiRevn8ay4aX46YWCujuytUW5mv9uB94vqBwGUUrg
+
+## NFT Minting Scripts
+
+```bash
+cd ts
+npx ts-node cluster1/nft_image.ts     # Upload image to Irys
+npx ts-node cluster1/nft_metadata.ts  # Upload metadata to Irys
+npx ts-node cluster1/nft_mint.ts      # Mint the NFT
+```
