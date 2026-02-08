@@ -15,14 +15,17 @@ umi.use(signerIdentity(signer));
 
 (async () => {
     try {
-        //1. Load image
-        //2. Convert image to generic file.
-        //3. Upload image
-
-        // const image = ???
-
-        // const [myUri] = ??? 
-        // console.log("Your image URI: ", myUri);
+        // 1. Load image from file (skull.png is in project root, run from ts/)
+        const image = await readFile("../skull.png");
+        
+        // 2. Convert image to generic file
+        const genericFile = createGenericFile(image, "skull.png", {
+            contentType: "image/png"
+        });
+        
+        // 3. Upload image to Irys
+        const [myUri] = await umi.uploader.upload([genericFile]);
+        console.log("Your image URI: ", myUri);
     }
     catch(error) {
         console.log("Oops.. Something went wrong", error);

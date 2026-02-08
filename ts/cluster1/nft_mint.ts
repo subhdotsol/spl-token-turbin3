@@ -16,11 +16,25 @@ umi.use(mplTokenMetadata())
 const mint = generateSigner(umi);
 
 (async () => {
-    // let tx = ???
-    // let result = await tx.sendAndConfirm(umi);
-    // const signature = base58.encode(result.signature);
-    
-    // console.log(`Succesfully Minted! Check out your TX here:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
-
-    console.log("Mint Address: ", mint.publicKey);
+    try {
+        // Replace this with your actual metadata URI from nft_metadata.ts
+        const metadataUri = "https://devnet.irys.xyz/DNUAiRevn8ay4aX46YWCujuytUW5mv9uB94vqBwGUUrg";
+        
+        // Create the NFT
+        let tx = createNft(umi, {
+            mint: mint,
+            name: "RuggedSkull",
+            symbol: "RSKULL",
+            uri: metadataUri,
+            sellerFeeBasisPoints: percentAmount(0), // 0% royalty
+        });
+        
+        let result = await tx.sendAndConfirm(umi);
+        const signature = base58.encode(result.signature);
+        
+        console.log(`Successfully Minted! Check out your TX here:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`);
+        console.log("Mint Address: ", mint.publicKey);
+    } catch (error) {
+        console.log("Error minting NFT:", error);
+    }
 })();
